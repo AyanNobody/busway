@@ -1,1 +1,6 @@
-# busway
+# Nazwa zespołu: BusWay Dev Team
+# Skład: Kacper Lipka, Adrian Jaworski.
+# Idea i problem
+Obecnie proces zakupu biletów na lokalne przewozy autobusowe oraz wynajem floty dla firm często opiera się na przestarzałych metodach, takich jak zakup u kierowcy czy ustalenia telefoniczne.Naszym celem jest stworzenie kompleksowego systemu BusWay, który zautomatyzuje te procesy. Aplikacja rozwiąże problem braku scentralizowanego dostępu do rozkładów i zakupu biletów z poziomu telefonu. Główną korzyścią dla przewoźnika będzie optymalizacja zarządzania trasami oraz odciążenie kierowców z zadań kasjerskich. Pasażerowie zyskają możliwość błyskawicznego, bezgotówkowego e-zakupu biletów. Dodatkowo, firmy będą mogły łatwo złożyć zapytanie o wynajem autobusu z kierowcą za pośrednictwem dedykowanego formularza. System zintegruje warstwę kliencką (CRM) z warstwą logistyczną dyspozytora.
+# Użytkownicy i scenariusz
+Główną grupą odbiorców są pasażerowie (klienci indywidualni) oraz dyspozytorzy zarządzający flotą. Scenariusz użycia: Pasażer otwiera aplikację mobilną, wpisuje przystanek początkowy i końcowy w wyszukiwarkę. System wyświetla dostępne kursy. Użytkownik wybiera pasującą mu godzinę, opłaca bilet bezgotówkowo i natychmiast otrzymuje wygenerowany kod QR uprawniający do przejazdu
