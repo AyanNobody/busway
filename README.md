@@ -15,10 +15,16 @@ F03: Użytkownik może anulować własną rezerwację (zwrot biletu) [MVP].
 
 F04: Dyspozytor może dodać, usunąć lub zmodyfikować rozkład jazdy w systemie (CRUD) [MVP].
 
-F05: Dyspozytor może ustalać grafik pracowników
+F05: Dyspozytor może ustalać grafik pracowników [MVP]
 
 F06: Pracownik może zaktualizować status techniczny pojazdu (np. zgłosić awarię) [MVP].
 
 F07: Pracownik może zobaczyć swoje dane (np. Grafik, Ilość przepracowanych godzin) [MVP]
 
 F08: Firma może wypełnić i wysłać zapytanie ofertowe o wynajem pojazdu z kierowcą [Rozszerzenie].
+
+## Poza zakresem
+
+F09: Śledzenie autobusów na mapie
+
+F10: Generowanie podsumowań rachunkowych z działalności firmy.
