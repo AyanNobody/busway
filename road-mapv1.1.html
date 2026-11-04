@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Untitled Document.md</title>
+  
+</head>
+<body id="preview">
+<h1 class="code-line has-line-data" data-line-start="0" data-line-end="1"><a id="Road_Map_Iteracja_v11_0"></a>Road Map - Iteracja v1.1</h1>
+<p class="has-line-data" data-line-start="1" data-line-end="2"><strong>Projekt:</strong> BusWay - system e-zakupu biletów i wynajmu pojazdów</p>
+<h2 class="code-line has-line-data" data-line-start="3" data-line-end="4"><a id="1_Cel_i_granice_wersji_v1_3"></a>1. Cel i granice wersji v1</h2>
+<p class="has-line-data" data-line-start="4" data-line-end="5">Głównym odbiorcą pierwszej wersji systemu jest Klient Indywidualny (Pasażer). Celem v1 jest umożliwienie użytkownikowi wyszukania dostępnych połączeń autobusowych dla wybranej daty i trasy, a następnie dokonania szybkiego e-zakupu biletu jednoliniowego.</p>
+<p class="has-line-data" data-line-start="6" data-line-end="8"><strong>Funkcje MVP w v1:</strong> Wyszukiwanie połączeń, zakup biletu, anulowanie rezerwacji (zwrot).<br>
+<strong>Przeniesione do v2:</strong> Wynajem B2B z kierowcą, zaawansowane zarządzanie rozkładami (CRUD) dla Dyspozytora.</p>
+<h2 class="code-line has-line-data" data-line-start="9" data-line-end="10"><a id="2_Widoki_Jak_to_ma_wyglda_9"></a>2. Widoki (Jak to ma wyglądać?)</h2>
+<ul>
+<li class="has-line-data" data-line-start="10" data-line-end="13"><strong>W01: Ekran główny wyboru biletów</strong>
+<ul>
+<li class="has-line-data" data-line-start="11" data-line-end="12"><strong>Cel:</strong> Wybór rodzaju usługi przez pasażera.</li>
+<li class="has-line-data" data-line-start="12" data-line-end="13"><strong>Dane:</strong> Podstawowe opcje nawigacyjne (Bilety na linię, Długodystansowe, Miesięczne).</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="13" data-line-end="16"><strong>W02: Wyszukiwarka połączeń</strong>
+<ul>
+<li class="has-line-data" data-line-start="14" data-line-end="15"><strong>Cel:</strong> Znalezienie konkretnego kursu przez pasażera.</li>
+<li class="has-line-data" data-line-start="15" data-line-end="16"><strong>Dane:</strong> Przystanek początkowy, końcowy, data. W przypadku błędu (np. brak dostępnych kursów) system wyświetla użytkownikowi komunikat “Brak połączeń”.</li>
+</ul>
+</li>
+<li class="has-line-data" data-line-start="16" data-line-end="19"><strong>W03: Potwierdzenie i e-Bilet</strong>
+<ul>
+<li class="has-line-data" data-line-start="17" data-line-end="18"><strong>Cel:</strong> Prezentacja zakupionego biletu.</li>
+<li class="has-line-data" data-line-start="18" data-line-end="19"><strong>Dane:</strong> Kod QR, dane pasażera, szczegóły wybranej trasy.</li>
+</ul>
+</li>
+</ul>
+<h2 class="code-line has-line-data" data-line-start="19" data-line-end="20"><a id="3_Struktura_bazy_danych_Jakie_dane_zapisujemy_19"></a>3. Struktura bazy danych (Jakie dane zapisujemy?)</h2>
+<ul>
+<li class="has-line-data" data-line-start="20" data-line-end="21"><strong>Klient:</strong> <code>id_klienta</code> (PK), <code>imie</code> (tekst), <code>nazwisko</code> (tekst), <code>email</code> (tekst).</li>
+<li class="has-line-data" data-line-start="21" data-line-end="22"><strong>Trasa:</strong> <code>id_trasy</code> (PK), <code>skad</code> (tekst), <code>dokad</code> (tekst), ‘lista przystankow’ (lista id w kolejnosci).</li>
+<li class="has-line-data" data-line-start="22" data-line-end="23"><strong>Przystanek:</strong> ‘id_przystanku’ (PK), ‘nazwa’ (tekst), ‘lokalizacja’ (tekst).</li>
+<li class="has-line-data" data-line-start="23" data-line-end="24"><strong>Rozklad_Jazdy:</strong> <code>id_rozkladu</code> (PK), <code>id_trasy</code> (FK), <code>data_odjazdu</code> (data i godzina), <code>dostepne_miejsca</code> (int).</li>
+<li class="has-line-data" data-line-start="24" data-line-end="26"><strong>Bilet:</strong> <code>id_biletu</code> (PK), <code>id_klienta</code> (FK), <code>id_rozkladu</code> (FK), <code>data_zakupu</code> (data i godzina), <code>status</code> (tekst - “aktywny” lub “zwrócony”).</li>
+</ul>
+<h2 class="code-line has-line-data" data-line-start="26" data-line-end="27"><a id="4_Funkcjonalnoci_Co_i_jak_ma_dziaa_26"></a>4. Funkcjonalności (Co i jak ma działać?)</h2>
+<ul>
+<li class="has-line-data" data-line-start="27" data-line-end="29"><strong>F01 - Wyszukanie połączeń:</strong> Użytkownik w W02 wybiera stację i datę. System odpytuje tabelę <code>Rozklad_Jazdy</code> i wyświetla wyniki. Warunek poprawności: data nie jest z przeszłości.<br>
+Sytuacja błędna: brak kursów skutkuje komunikatem braku połączeń.</li>
+<li class="has-line-data" data-line-start="29" data-line-end="30"><strong>F02 - Zakup biletu:</strong> Użytkownik klika “Kup” w W02. System zapisuje rekord w tabeli <code>Bilet</code>, pomniejsza <code>dostepne_miejsca</code> w <code>Rozklad_Jazdy</code> i przenosi użytkownika do W03. Warunek: w tabeli rozkładu <code>dostepne_miejsca &gt; 0</code>.</li>
+<li class="has-line-data" data-line-start="30" data-line-end="32"><strong>F04 - Zwrot biletu:</strong> W W03 użytkownik klika przycisk “Anuluj”. System zmienia status w tabeli <code>Bilet</code> na zwrócony i powiększa pulę dostępnych miejsc o 1.</li>
+</ul>
+<h2 class="code-line has-line-data" data-line-start="32" data-line-end="33"><a id="5_Mapa_prac_dla_pierwszej_iteracji_32"></a>5. Mapa prac dla pierwszej iteracji</h2>
+<table class="table table-striped table-bordered">
+<thead>
+<tr>
+<th style="text-align:left">Etap v1</th>
+<th style="text-align:left">Od czego zależy?</th>
+<th style="text-align:left">Oczekiwany rezultat</th>
+<th style="text-align:left">Przypisana osoba</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Cel i zakres</strong></td>
+<td style="text-align:left">Pomysł z laba 01</td>
+<td style="text-align:left">Jasny cel v1 i wybrane funkcje MVP.</td>
+<td style="text-align:left">Adrian &amp; Kacper</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>1. Widoki</strong></td>
+<td style="text-align:left">Cel i zakres v1</td>
+<td style="text-align:left">Lista widoków, szkice i nawigacja.</td>
+<td style="text-align:left">Kacper</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2. Struktura bazy</strong></td>
+<td style="text-align:left">Dane potrzebne w widokach</td>
+<td style="text-align:left">Tabele, pola, klucze i relacje.</td>
+<td style="text-align:left">Adrian</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>3. Funkcjonalności</strong></td>
+<td style="text-align:left">Widoki i struktura bazy</td>
+<td style="text-align:left">Opis działania i warunki poprawności.</td>
+<td style="text-align:left">Adrian &amp; Kacper</td>
+</tr>
+</tbody>
+</table>
+<h2 class="code-line has-line-data" data-line-start="40" data-line-end="41"><a id="6_Kierunek_iteracji_v2_40"></a>6. Kierunek iteracji v2</h2>
+<ul>
+<li class="has-line-data" data-line-start="41" data-line-end="42"><strong>Pomysł 1: Panel Dyspozytora.</strong> Cel: optymalizacja pracy z zapleczem systemu. Zmiana w widokach: nowy panel tabelaryczny. Zmiana w bazie danych: dodanie tabeli <code>Pojazd</code>. Zmiana w funkcjonalnościach: obsługa operacji CRUD dla floty oraz zgłaszanie awarii technicznych.</li>
+<li class="has-line-data" data-line-start="42" data-line-end="43"><strong>Pomysł 2: Wynajem B2B.</strong> Cel: obsługa klientów instytucjonalnych. Zmiana w widokach: interaktywny formularz zapytania ofertowego dla firm. Zmiana w bazie danych: dodanie tabel obsługujących umowy najmu. Zmiana w funkcjonalnościach: proces obsługi rezerwacji autokaru wraz z kierowcą.</li>
+</ul>
+
+</body>
+</html>
