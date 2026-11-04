@@ -5,12 +5,20 @@ Obecnie proces zakupu biletów na lokalne przewozy autobusowe oraz wynajem floty
 # Użytkownicy i scenariusz
 Główną grupą odbiorców są pasażerowie (klienci indywidualni) oraz dyspozytorzy zarządzający flotą. Scenariusz użycia: Pasażer otwiera aplikację mobilną, wpisuje przystanek początkowy i końcowy w wyszukiwarkę. System wyświetla dostępne kursy. Użytkownik wybiera pasującą mu godzinę, opłaca bilet bezgotówkowo i natychmiast otrzymuje wygenerowany kod QR uprawniający do przejazdu
 
-# Zakres funkcjonalny
+#Zakres funkcjonalny
+
 F01: Użytkownik może wyszukać dostępne połączenia autobusowe na podstawie przystanków i daty [MVP].
+
 F02: Użytkownik może dokonać zakupu biletu jednoliniowego lub okresowego [MVP].
+
 F03: Użytkownik może anulować własną rezerwację (zwrot biletu) [MVP].
+
 F04: Dyspozytor może dodać, usunąć lub zmodyfikować rozkład jazdy w systemie (CRUD) [MVP].
+
 F05: Dyspozytor może ustalać grafik pracowników
+
 F06: Pracownik może zaktualizować status techniczny pojazdu (np. zgłosić awarię) [MVP].
-F07: Pracownik może zobaczyć swoje dane (np. Grafik, Ilość przepracowanych godzin)
+
+F07: Pracownik może zobaczyć swoje dane (np. Grafik, Ilość przepracowanych godzin) [MVP]
+
 F08: Firma może wypełnić i wysłać zapytanie ofertowe o wynajem pojazdu z kierowcą [Rozszerzenie].
