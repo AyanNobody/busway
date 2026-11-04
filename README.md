@@ -28,3 +28,10 @@ F08: Firma może wypełnić i wysłać zapytanie ofertowe o wynajem pojazdu z ki
 F09: Śledzenie autobusów na mapie
 
 F10: Generowanie podsumowań rachunkowych z działalności firmy.
+
+# Organizacja współpracy
+Wspólna analiza każdego kroku > podejmowanie decyzji o tym która osoba ma się zająć danym zadaniem > Weryfikacja przez drugą osobę wykonanego zadania > Zamieszczenie zmian na GitChub
+
+# Linki
+https://inzopr-lipka-jaworski.collaborychat.com
+https://github.com/AyanNobody/busway/edit/main/README.md
