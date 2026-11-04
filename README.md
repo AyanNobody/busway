@@ -34,4 +34,5 @@ Wspólna analiza każdego kroku > podejmowanie decyzji o tym która osoba ma si�
 
 # Linki
 https://inzopr-lipka-jaworski.collaborychat.com
+
 https://github.com/AyanNobody/busway/edit/main/README.md
